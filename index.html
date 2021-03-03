@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebAR | Space</title>
+        
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+        <style>
+            body{
+                margin: 0px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+            <a-assets>
+                <img id="earthM" src="./assets/earth.jpg">
+                <img id="sunM" src="./assets/sun.png">
+                <img id="moonM" src="./assets/moon.jpg">
+                <img id="marsM" src="./assets/mars.jpg">
+                <img id="venusM" src="./assets/venus.jpg">
+                <a-asset-item id="pragyanM" src="./assets/pragyan/scene.gltf"></a-asset-item>
+                <a-asset-item id="vikramM" src="./assets/vikram/scene.gltf"></a-asset-item>
+            </a-assets>
+
+
+            <a-marker id="earth" type="pattern" preset="custom" url="./markers/pattern-EARTH.patt">
+                <a-sphere radius="0.8" position="0 0 0" material="src:#earthM;" rotation="0 90 270" animation="property:rotation; to:360 90 270; loop:true; easing:linear; dur:5000;" >
+                    <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop:true; easing:linear; dur: 6000">
+                        <a-sphere id="moon" material="src:#moonM;" radius="0.2" position="0 0 1.2" animation="property: rotation; to: 0 360 0; loop:true; easing:linear; dur: 6000"></a-sphere>
+                    </a-entity>
+                </a-sphere>
+            </a-marker>
+
+            <a-marker id="sun" type="pattern" preset="custom" url="./markers/pattern-SUN.patt">
+                <a-sphere radius="1" position="0 0 0" material="src:#sunM;" rotation="0 90 270" animation="property:rotation; to:360 90 270; loop:true; easing:linear; dur:5000;" ></a-sphere>
+            </a-marker>
+
+            <a-marker id="mars" type="pattern" preset="custom" url="./markers/pattern-mars.patt">
+                <a-sphere radius="0.9" position="0 0 0" material="src:#marsM;" rotation="0 90 270" animation="property:rotation; to:360 90 270; loop:true; easing:linear; dur:5000;" ></a-sphere>
+            </a-marker>
+
+            <a-marker id="venus" type="pattern" preset="custom" url="./markers/pattern-venus.patt">
+                <a-sphere radius="0.9" position="0 0 0" material="src:#venusM;" rotation="0 90 270" animation="property:rotation; to:360 90 270; loop:true; easing:linear; dur:5000;" ></a-sphere>
+            </a-marker>
+
+            <a-marker id="pragyan" type="pattern" preset="custom" url="./markers/pattern-Pragyan.patt">
+               <a-entity id="pragyanR" gltf-model="#pragyanM" scale="0.02 0.02 0.02" position="0 0 0" rotation="0 270 90" animation="property:rotation; to:360 270 90; loop:true; easing:linear; dur:5000;"></a-entity>
+            </a-marker>
+
+            <a-marker id="vikram" type="pattern" preset="custom" url="./markers/pattern-Vikram.patt">
+                <a-entity id="vikramR" gltf-model="#vikramM" scale="0.01 0.01 0.01" position="0 0 0" rotation="0 270 90" animation="property:rotation; to:360 270 90; loop:true; easing:linear; dur:5000;"></a-entity>
+             </a-marker>
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
